@@ -67,8 +67,7 @@ app.post('/api/member/createOrUpdatePerson', jsonParser, function(req, res) {
         return;
     }
 
-    let id = req.body.id;
-    if (id === null || typeof req.body.id === 'undefined' || req.body.id === 0)
+    if (req.body.id === null || typeof req.body.id === 'undefined' || req.body.id === 0)
     {
         var createOrUpdatePerson = Person({
             firstname: req.body.firstname,
