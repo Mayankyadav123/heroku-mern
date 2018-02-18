@@ -66,8 +66,9 @@ app.post('/api/member/createOrUpdatePerson', jsonParser, function(req, res) {
         res.send('First Name or Last Name not entered');
         return;
     }
-    
-    if (req.body.id !== null && typeof req.body.id !== 'undefined' && req.body.id === 0)
+
+    let id = req.body.id;
+    if (id === null || typeof req.body.id === 'undefined' || req.body.id === 0)
     {
         var createOrUpdatePerson = Person({
             firstname: req.body.firstname,
