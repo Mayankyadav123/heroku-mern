@@ -7,12 +7,12 @@ import { Link } from 'react-router-dom';
 class Home extends Component {
     constructor(props) {
         super(props);
-
         this.state = { firstName: '', lastName: '' };
     }
 
     componentWillMount() {
-        this.props.fetchPersons();
+        if (typeof(this.props.persons.persons) === 'undefined')
+            this.props.fetchPersons();
     }
 
     componentDidMount() {

@@ -64,7 +64,7 @@ class PersonDetail extends Component {
                             placeholder="First Name"
                             value={this.state.firstName}
                             onChange={this.onFirstNameChange} />
-                            <label for="first">First Name</label>
+                            <label>First Name</label>
                     </div>
                     <div className="input">
                         <input
