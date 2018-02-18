@@ -15,7 +15,15 @@ var jsonParser = bodyParser.json();
 
 var mongoose = require('mongoose');
 
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/test');
 
+var Schema = mongoose.Schema;
+var personSchema = new Schema({
+    firstname: String,
+    lastname: String
+});
+
+var Person = mongoose.model('person', personSchema);
 
 var corsOptions = {
     origin: 'http://localhost:3000',
@@ -61,16 +69,6 @@ app.post('/api/member/createOrUpdatePerson', jsonParser, function(req, res) {
     
     if (req.body.id !== null && typeof req.body.id !== 'undefined' && req.body.id === 0)
     {
-        mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/test');
-
-        var Schema = mongoose.Schema;
-        var personSchema = new Schema({
-            firstname: String,
-            lastname: String
-        });
-
-        var Person = mongoose.model('person', personSchema);
-
         var createOrUpdatePerson = Person({
             firstname: req.body.firstname,
             lastname: req.body.lastname
