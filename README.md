@@ -1,6 +1,6 @@
-Run MERN app out of the box with minimal setup
+Run MERN app out of the box, for deployment on Heroku - with minimal setup
 
-MUST HAVE heroku-cli installed and a CREDIT CARD on file with heroku to create a MongoDB (MongoLab - FREE)
+To deploy to Heroku you MUST HAVE the heroku-cli installed and a CREDIT CARD on file with Heroku to create a FREE MongoLab (MongoDB)
 
 Heroku uses a Credit Card as a form of validation
 
