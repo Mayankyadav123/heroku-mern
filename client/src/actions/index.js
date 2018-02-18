@@ -1,7 +1,13 @@
 import axios from 'axios';
 import { PERSONS_FETCH, PERSON_FETCH, PERSON_DELETE, PERSON_CREATE, PERSON_UPDATE } from './types';
 import { mapKeys } from 'lodash';
-const api = 'http://localhost:3030/api/';
+
+let api = '/api/';
+
+if (window.location.hostname.indexOf('localhost') >= 0)
+{
+    api = 'http://localhost:3030/api/';
+}
 
 export function fetchPersons() {
     return function (dispatch) {
