@@ -4,4 +4,4 @@ MUST HAVE heroku-cli installed and a CREDIT CARD on file with heroku to create a
 
 Heroku uses a Credit Card as a form of validation
 
-Reference install file to begin.
+Reference install.txt to begin.
