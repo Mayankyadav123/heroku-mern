@@ -15,7 +15,7 @@ var jsonParser = bodyParser.json();
 
 var mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/test');
+mongoose.connect(process.env.MONGODB_URI + '/person' || 'mongodb://localhost:27017/test');
 
 var Schema = mongoose.Schema;
 var personSchema = new Schema({
@@ -34,10 +34,6 @@ app.options('*', cors());
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
-});
-
-app.get('/vars', function(req, res) {
-    res.send(process.env.MONGODB_URI);
 });
 
 app.get('/api/member', function(req, res) {
