@@ -1,0 +1,64 @@
+body {
+    font-family: Verdana;
+}
+
+.input {
+  position: relative;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+/* Normal state */
+.input input {
+  min-width: 240px;
+  padding: 10px 16px;
+  border-radius: 3px;
+  border: none;
+  box-shadow: 0 0 0 1px #95a5a6;
+}
+.input input::-webkit-input-placeholder  {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+.input input::-moz-placeholder {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+.input label {
+  color: #95a5a6;
+  position: absolute;
+  top: 10px;
+  left: 16px;
+  transition: all 200ms;
+}
+
+/* Focussed state  */
+.input input:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px #3498db;
+}
+.input input:focus::-webkit-input-placeholder {
+  opacity: 0.5;
+}
+.input input:focus::-moz-placeholder {
+  opacity: 0.5;
+}
+.input input:focus ~ label,
+.input input:not(:placeholder-shown) ~ label {
+  background-color: #fff;
+  padding: 1px 2px;
+  border-radius: 3px;
+  left: 0;
+  transform: translate3d(0,-21px,0) scale(0.75)
+}
+.input input:focus ~ label {
+  color: #3498db;
+}
+
+/* Error state */
+.input input:invalid:not(:placeholder-shown) {
+  box-shadow: 0 0 0 1px #c0392b !important;
+}
+.input input:invalid:not(:placeholder-shown) ~ label {
+  color: #c0392b !important;
+}
