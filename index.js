@@ -36,6 +36,10 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
+app.get('/vars', function(req, res) {
+    res.send(MONGODB_URI);
+});
+
 app.get('/api/member', function(req, res) {
     Person.find({}, function(err, persons) {
         if (err) throw err;
