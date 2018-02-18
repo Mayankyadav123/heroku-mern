@@ -15,7 +15,7 @@ var jsonParser = bodyParser.json();
 
 var mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI + '/person' || 'mongodb://localhost:27017/test');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/test');
 
 var Schema = mongoose.Schema;
 var personSchema = new Schema({
