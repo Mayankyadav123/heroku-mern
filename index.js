@@ -37,7 +37,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/vars', function(req, res) {
-    res.send(MONGODB_URI);
+    res.send(process.env.MONGODB_URI);
 });
 
 app.get('/api/member', function(req, res) {
