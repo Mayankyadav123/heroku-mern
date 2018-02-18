@@ -30,6 +30,8 @@ var corsOptions = {
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
+app.options('*', cors());
+
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
