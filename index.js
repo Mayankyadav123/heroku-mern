@@ -88,53 +88,12 @@ app.post('/api/member/createOrUpdatePerson', jsonParser, function(req, res) {
                 res.send(req.body.id);
             }
         );
-
-        // res.send(true);
-
-        /*
-        createOrUpdatePerson.update(function(err) {
-            res.send(createOrUpdatePerson._id);
-            if (err)  {
-                console.log(err);
-            } else {
-                console.log(createOrUpdatePerson)
-            }
-        });
-        */
     }
-    
-    /*
-    Person.find({'lastname': req.body.lastname }, function(err, persons) {
-        if (err) throw err;
-
-        if (persons.length !== 0){
-            res.send('Person already exists');
-            console.log(persons.length)
-        } else {
-            console.log('hit3')
-
-            
-
-            res.send('Person Created'); 
-        }
-    });
-    */
 });
 
 app.use('/', function(req, res, next) {
     res.send('Loading...');
-
-    //Person.find({}, function(err, users) {
-    //    if (err) throw err;
-
-    //    console.log(users);
-    //});
-
-    //next();
 });
-
-
-
 
 var port = process.env.PORT || 3030;
 
