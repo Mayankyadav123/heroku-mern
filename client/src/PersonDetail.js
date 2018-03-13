@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchPerson, createOrUpdatePerson } from './actions';
+import { Input, Label } from 'semantic-ui-react'
 
 
 class PersonDetail extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { firstName: '', lastName: '', personLoaded: false, addOrUpdate: 'Add Person' };
+        this.state = { firstName: '', lastName: '', lastNameSearch: '', personLoaded: false, addOrUpdate: 'Add Person' };
         this.onFirstNameChange = this.onFirstNameChange.bind(this);
         this.onLastNameChange = this.onLastNameChange.bind(this);
         this.onFormSubmit = this.onFormSubmit.bind(this);
@@ -56,26 +57,28 @@ class PersonDetail extends Component {
         return (
             <div className="container">
                 <Link to="/">Home</Link><br/><br/>
+               
                 <form onSubmit={this.onFormSubmit}>
                     <div className="input">
-                        <input
-                            className="form-control"
+                        <label>First Name</label>
+                        <Input
                             type="text"
+                            className="ui input"
                             placeholder="First Name"
                             value={this.state.firstName}
                             onChange={this.onFirstNameChange} />
-                            <label>First Name</label>
+   
                     </div>
                     <div className="input">
-                        <input
+                        <label>Last Name</label>
+                        <Input
                             type="text"
+                            className="ui input"
                             placeholder="Last Name"
                             value={this.state.lastName}
                             onChange={this.onLastNameChange} />
-                            <label>Last Name</label>
                     </div>
-
-                        <button type="submit">{ this.state.addOrUpdate }</button>
+                    <button type="submit">{ this.state.addOrUpdate }</button>
                 </form>
             </div>
         );

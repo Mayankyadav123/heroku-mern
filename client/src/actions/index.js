@@ -9,11 +9,14 @@ if (window.location.hostname.indexOf('localhost') >= 0)
     api = 'http://localhost:3030/api/';
 }
 
-export function fetchPersons() {
+export function fetchPersons(page) {
     return function (dispatch) {
-        axios.get(`${api}member`).then((returnedData) => {
-            const persons = mapKeys(returnedData.data, '_id');
-            dispatch(getPersons(persons));
+        axios.get(`${api}members/${page}`).then((returnedData) => {
+            let persons = {};
+            persons.persons = mapKeys(returnedData.data.persons, '_id');
+            persons.maxPersonsReturned = returnedData.data.maxRecordsReturned;
+            persons.totalPersonsCount = returnedData.data.totalRecords;
+            dispatch(personsFetch(persons));
         });
     }
 }
@@ -21,7 +24,19 @@ export function fetchPersons() {
 export function fetchPerson(id) {
     return function (dispatch) {
         axios.get(`${api}member/${id}`).then((returnedData) => {
-            dispatch(getPerson(returnedData));
+            dispatch(personFetch(returnedData));
+        });
+    }
+}
+
+export function searchPersonsByLastName(lastName) {
+    return function (dispatch) {
+        axios.get(`${api}members/find/${lastName}`).then((returnedData) => {
+            let persons = {};
+            persons.persons = mapKeys(returnedData.data.persons, '_id');
+            persons.maxPersonsReturned = returnedData.data.maxRecordsReturned;
+            persons.totalPersonsCount = returnedData.data.totalRecords;
+            dispatch(personsFetch(persons));
         });
     }
 }
@@ -34,11 +49,11 @@ export function createOrUpdatePerson(id, firstname, lastname) {
                 firstname,
                 lastname
             };
-
-            if (id === 0)
-                dispatch(addPerson(person));
+            
+            if (typeof(id) === 'undefined')
+                dispatch(personAdd(person));
             else
-                dispatch(updatePerson(person));
+                dispatch(personUpdate(person));
         });
     }
 }
@@ -47,7 +62,7 @@ export function deletePerson(persons, person) {
     return function(dispatch) {
         axios.delete(`${api}member/${person._id}`).then((returnedData) => {
             if (returnedData) {
-                dispatch(removePerson(person));
+                dispatch(personDelete(person));
             }
         });        
     }
@@ -57,35 +72,35 @@ export function deletePerson(persons, person) {
 // --------------------------------------------------------------------------------------------- //
 // Actions (execute)
 
-function getPersons(persons) {
+function personsFetch(persons) {
     return {
         type: PERSONS_FETCH,
         payload: persons
     };
 }
 
-function getPerson(person) {
+function personFetch(person) {
     return {
         type: PERSON_FETCH,
         payload: person
     };
 }
 
-function addPerson(person) {
+function personAdd(person) {
     return {
         type: PERSON_CREATE,
         payload: person
     };
 }
 
-function updatePerson(person) {
+function personUpdate(person) {
     return {
         type: PERSON_UPDATE,
         payload: person
     };
 }
 
-function removePerson(person) {
+function personDelete(person) {
     return {
         type: PERSON_DELETE,
         payload: person

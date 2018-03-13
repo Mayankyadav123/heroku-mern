@@ -7,9 +7,10 @@ import { Provider } from 'react-redux';
 import reducers from './reducers';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import PersonDetail from './PersonDetail';
-
-import "./style.css";
+import 'semantic-ui-css/semantic.min.css';
+// import "./style.css";
 // import 'bootstrap/dist/css/bootstrap.css';
+// import '../semantic/dist/semantic.min.css';
 
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);

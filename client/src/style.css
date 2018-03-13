@@ -9,6 +9,7 @@ body {
 }
 
 /* Normal state */
+/*
 .input input {
   min-width: 240px;
   padding: 10px 16px;
@@ -31,8 +32,10 @@ body {
   left: 16px;
   transition: all 200ms;
 }
+*/
 
 /* Focussed state  */
+/*
 .input input:focus {
   outline: none;
   box-shadow: 0 0 0 1px #3498db;
@@ -54,11 +57,13 @@ body {
 .input input:focus ~ label {
   color: #3498db;
 }
-
+*/
 /* Error state */
+/*
 .input input:invalid:not(:placeholder-shown) {
   box-shadow: 0 0 0 1px #c0392b !important;
 }
 .input input:invalid:not(:placeholder-shown) ~ label {
   color: #c0392b !important;
 }
+*/
